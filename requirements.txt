@@ -1,0 +1,10 @@
+pandas
+numpy
+seaborn
+scikit-learn
+dvc
+mlflow
+xgboost
+ipykernel
+python-dotenv
+-e .
