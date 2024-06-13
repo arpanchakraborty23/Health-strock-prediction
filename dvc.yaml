@@ -19,4 +19,13 @@ stages:
       - artifacts/data_transformation/train.npy
       - artifacts/data_transformation/test.npy
       - artifacts/data_transformation/preprocess.pkl 
+  model_train:
+    cmd: python src/pipline/Train_pipline.py
+    deps:
+     - src/pipline/Train_pipline.py
+     - config/config.yaml
+     - artifacts/data_transformation/train.npy
+     - artifacts/data_transformation/test.npy
+    outs:
+     - artifacts/model_train/model.pkl
 

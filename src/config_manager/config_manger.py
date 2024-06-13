@@ -2,7 +2,7 @@ import os,sys
 import yaml
 from src.logging.logger import logging
 from src.exception.exception import CustomException
-from src.entity.config_entity import DataIngestonConfig,DatatranformationConfig
+from src.entity.config_entity import DataIngestonConfig,DatatranformationConfig,ModelTrainConfig
 from src.constant.yaml_path import *
 from src.utils.utils import read_yaml,create_dir
 
@@ -52,4 +52,23 @@ class ConfigManager:
         except Exception as e:
             logging.info(f'error {str(e)}')
             raise CustomException(sys,e)
+        
+    def get_model_train_config(self):
+        try:
+
+            config=self.config.Model_Train
+            create_dir([config.dir])
+
+            data_transformation_config=ModelTrainConfig(
+                dir=config.dir,
+                train_arr=config.train_arr,
+                test_arr=config.test_arr,
+                model=config.model
+
+            )
+            return data_transformation_config
+        except Exception as e:
+            logging.info(f'error {str(e)}')
+            raise CustomException(sys,e)
+        
         

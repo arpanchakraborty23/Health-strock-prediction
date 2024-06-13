@@ -4,6 +4,7 @@ from src.exception.exception import CustomException
 from src.config_manager.config_manger import ConfigManager
 from src.components.Data_ingestion import DataIngestion
 from src.components.Data_trnsformation import DataTransformation
+from src.components.model_train import ModelTrain
 
 
 class TrainPipline:
@@ -27,6 +28,15 @@ class TrainPipline:
             data_transform.initate_data_transformation()
 
             logging.info('<<<<<<<<<<<<<<<< Data_Transformation Complete >>>>>>>>>>>>>>>>>>')
+
+
+            logging.info('<<<<<<<<<<<<<<<< Model Train >>>>>>>>>>>>>>>>>>')
+            config=ConfigManager()
+            model_train_config=config.get_model_train_config()
+            model_train=ModelTrain(model_train_config)
+            model_train.initate_model_train()
+
+            logging.info('<<<<<<<<<<<<<<<< Model Train complete >>>>>>>>>>>>>>>>>>')
 
 
             
