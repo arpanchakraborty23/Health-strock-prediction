@@ -9,3 +9,12 @@ class DataIngestonConfig:
     train_data:Path
     test_data:Path
     
+@dataclass
+class DatatranformationConfig:
+    dir: Path
+    train_arr:Path
+    test_arr: Path
+    target_col:Path
+    train_data:Path
+    test_data:Path
+    preprocess_obj:Path

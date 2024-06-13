@@ -1,6 +1,7 @@
 import os
 import sys
 import yaml,json
+import pickle
 from pathlib import Path
 from ensure import ensure_annotations
 from box import ConfigBox
@@ -27,3 +28,8 @@ def create_dir(file_path:list,verbose=True):
                 logging.info(f"created directory at: {path}")    
     except Exception as e:
         raise CustomException(sys,e) 
+    
+def save_obj(file_path,obj):
+    with open(file_path,'wb') as f:
+        pickle.dump(obj,f)
+

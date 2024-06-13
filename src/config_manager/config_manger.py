@@ -2,7 +2,7 @@ import os,sys
 import yaml
 from src.logging.logger import logging
 from src.exception.exception import CustomException
-from src.entity.config_entity import DataIngestonConfig
+from src.entity.config_entity import DataIngestonConfig,DatatranformationConfig
 from src.constant.yaml_path import *
 from src.utils.utils import read_yaml,create_dir
 
@@ -14,7 +14,7 @@ class ConfigManager:
 
         create_dir([self.config.Artifacts_root])
 
-    def data_ingestion_config(self):
+    def get_data_ingestion_config(self):
         try:
             config=self.config.Data_Ingestion
             create_dir([config.dir])
@@ -31,3 +31,25 @@ class ConfigManager:
         except Exception as e:
             logging.info(f'error {str(e)}')
             raise CustomException(sys,e)
+        
+    def get_data_transformation_config(self):
+        try:
+
+            config=self.config.Data_Trnsformation
+            create_dir([config.dir])
+
+            data_transformation_config=DatatranformationConfig(
+                dir=config.dir,
+                train_arr=config.train_arr,
+                test_arr=config.test_arr,
+                target_col=self.param.Target_col,
+                train_data=config.train_data,
+                test_data=config.test_data,
+                preprocess_obj=config.preprocess_obj
+
+            )
+            return data_transformation_config
+        except Exception as e:
+            logging.info(f'error {str(e)}')
+            raise CustomException(sys,e)
+        

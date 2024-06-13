@@ -4,10 +4,10 @@ from sklearn.model_selection import train_test_split
 
 from src.logging.logger import logging
 from src.exception.exception import CustomException
-from src.config_manager.config_manger import ConfigManager
+from src.entity.config_entity import DataIngestonConfig
 
 class DataIngestion:
-    def __init__(self,config=ConfigManager) -> None:
+    def __init__(self,config=DataIngestonConfig) -> None:
         self.config=config
 
     def initate_data_ingestion(self):
