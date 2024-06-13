@@ -7,4 +7,7 @@ mlflow
 xgboost
 ipykernel
 python-dotenv
+imblearn
+ensure
+python-box
 -e .
