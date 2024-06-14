@@ -51,4 +51,4 @@ python app.py
 ```
 localhost:5000/predict
 ```
-[{uplod.png}]
+![Upload Interface](upload.png)
