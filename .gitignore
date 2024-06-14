@@ -9,7 +9,7 @@ __pycache__/
 # Distribution / packaging
 ht
 logs
-
+artifacts
 .Python
 build/
 develop-eggs/

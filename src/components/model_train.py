@@ -29,14 +29,53 @@ class ModelTrain:
 
             models={
                 'LogisticRegression':LogisticRegression(),
-                'KNeighbors': KNeighborsClassifier(),
+                'KNeighborsClassifier': KNeighborsClassifier(),
                 'DesisionTree':DecisionTreeClassifier(),
                 'RandomForest':RandomForestClassifier(),
                 'BaggingClf':BaggingClassifier(),
                 'Xgboost':XGBClassifier()
             }
 
-            report:dict=model_evaluatuion(x_train,y_train,x_test,y_test,models)
+            params = {
+                'LogisticRegression': {
+                    'C': [1, 5, 10],
+                    'penalty': ['l1', 'l2'],
+                    'solver': ['lbfgs', 'liblinear', 'newton-cg', 'sag', 'saga']
+                },
+                'KNeighborsClassifier': {
+                    'n_neighbors': [1, 3, 5, 10],
+                    'weights': ['uniform', 'distance'],
+                    'metric': ['euclidean', 'manhattan']
+                },
+                'DesisionTree': {
+                    'criterion': ['gini', 'entropy'],
+                    'max_depth': [None, 10, 20, 30],
+                    'min_samples_split': [2, 5, 10],
+                    'min_samples_leaf': [1, 2, 4]
+                },
+                'RandomForest': {
+                    'n_estimators': [50, 100, 200],
+                    'max_depth': [None, 10, 20, 30],
+                    'min_samples_split': [2, 5, 10],
+                    'min_samples_leaf': [1, 2, 4]
+                },
+                'BaggingClf': {
+                    'n_estimators': [50, 100, 200],
+                    'max_samples': [0.5, 0.7, 0.9]
+                },
+                'Xgboost': {
+                    'n_estimators': [50, 100, 200],
+                    'learning_rate': [0.01, 0.1, 0.2, 0.3],
+                    'max_depth': [3, 5, 7, 9],
+                    'subsample': [0.6, 0.8, 1.0],
+                    'colsample_bytree': [0.6, 0.8, 1.0]
+                }
+            }
+            report:dict=model_evaluatuion(x_train,y_train,x_test,y_test,models,params)
+
+            print(report)
+            logging.info(f'Model Report : {report}')
+
             print('\n====================================================================================\n')
 
             # 6. Find the best model

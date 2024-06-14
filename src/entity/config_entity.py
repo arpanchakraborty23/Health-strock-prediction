@@ -25,4 +25,12 @@ class ModelTrainConfig:
     train_arr:Path
     test_arr: Path
     model:Path
+
+@dataclass
+class PredictionConfig:
+    model:Path
+    preprocess_obj:Path
+    prediction_output_dirname:str
+    prediction_file_name:Path
+
     

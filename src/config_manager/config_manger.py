@@ -2,7 +2,7 @@ import os,sys
 import yaml
 from src.logging.logger import logging
 from src.exception.exception import CustomException
-from src.entity.config_entity import DataIngestonConfig,DatatranformationConfig,ModelTrainConfig
+from src.entity.config_entity import DataIngestonConfig,DatatranformationConfig,ModelTrainConfig,PredictionConfig
 from src.constant.yaml_path import *
 from src.utils.utils import read_yaml,create_dir
 
@@ -65,6 +65,27 @@ class ConfigManager:
                 test_arr=config.test_arr,
                 model=config.model
 
+            )
+            return data_transformation_config
+        except Exception as e:
+            logging.info(f'error {str(e)}')
+            raise CustomException(sys,e)
+class PredictionConfigManager:
+    def __init__(self,config_file_path=Config_file_path) -> None:
+        self.config=read_yaml(config_file_path)
+                   
+        create_dir([self.config.Artifacts_root])
+    def get_prediction_config(self):
+        try:
+
+            config=self.config.Prediction_pipline
+            create_dir([config.dir])
+
+            data_transformation_config=PredictionConfig(
+                model=config.model,
+                preprocess_obj=config.preprocess_obj,
+                prediction_file_name=config.prediction_file_name,
+                prediction_output_dirname=config.prediction_output_dirname
             )
             return data_transformation_config
         except Exception as e:

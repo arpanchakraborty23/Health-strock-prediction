@@ -1,4 +1,5 @@
 LICENCE
+LICENSE
 README.md
 setup.py
 Heat_strock_prediction.egg-info/PKG-INFO

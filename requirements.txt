@@ -10,4 +10,5 @@ python-dotenv
 imblearn
 ensure
 python-box
+flask
 -e .

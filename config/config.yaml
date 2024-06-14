@@ -19,3 +19,9 @@ Model_Train:
   train_arr: artifacts/data_transformation/train.npy
   test_arr: artifacts/data_transformation/test.npy
   model: artifacts/model_train/model.pkl
+
+Prediction_pipline:
+  model: artifacts/model_train/model.pkl
+  preprocess_obj: artifacts/data_transformation/preprocess.pkl
+  prediction_output_dirname: Predictions
+  prediction_file_name:  predicted_file.csv
