@@ -1,5 +1,6 @@
 import os,sys
 import yaml
+import pandas as pd
 from src.logging.logger import logging
 from src.exception.exception import CustomException
 from src.entity.config_entity import DataIngestonConfig,DatatranformationConfig,ModelTrainConfig,PredictionConfig
@@ -79,7 +80,7 @@ class PredictionConfigManager:
         try:
 
             config=self.config.Prediction_pipline
-            create_dir([config.dir])
+            
 
             data_transformation_config=PredictionConfig(
                 model=config.model,
@@ -91,5 +92,4 @@ class PredictionConfigManager:
         except Exception as e:
             logging.info(f'error {str(e)}')
             raise CustomException(sys,e)
-        
         

@@ -73,3 +73,67 @@ class PredictionPipline:
         self.get_pred_as_df(input_csv)
 
         return self.config
+    
+
+class FormPredictionPipeline:
+    def __init__(self,config=PredictionConfig):
+        self.config=config
+        
+        logging.info('form prediction config')
+        
+
+    def predict(self,features):
+        
+        model=load_obj(self.config.model)
+        scaler=load_obj(self.config.preprocess_obj)
+
+        trnsform=scaler.transform(features)
+        pred=model.predict(trnsform)
+
+        return pred
+    
+class CustomData:
+    def __init__(self,
+                id:int,
+                gender:int, 
+                age:float,
+                hypertension:int,
+                heart_disease:int,
+                ever_married:int,
+                work_type:int,
+                Residence_type:int,
+                avg_glucose_level:float,
+                bmi:float,
+                smoking_status:int) -> None:
+        
+                self.id=id
+                self.gender=gender
+                self.age=age
+                self.hypertension=hypertension
+                self.heart_disease=heart_disease
+                self.ever_married=ever_married
+                self.work_type=work_type
+                self.Residence_type=Residence_type
+                self.avg_glucose_level=avg_glucose_level
+                self.bmi=bmi
+                self.smoking_status=smoking_status
+
+    def get_custom_df(self):
+        custom_input_data={
+            'id':[self.id],
+                'gender':[self.gender],
+                'age':[self.age],
+                'hypertension':[self.hypertension],
+                'heart_disease':[self.heart_disease],
+                'ever_married':[self.ever_married],
+                'work_type':[self.work_type],
+                'Residence_type':[self.Residence_type],
+                'avg_glucose_level':[self.avg_glucose_level],
+                'bmi':[self.bmi],
+                'smoking_status':[self.smoking_status]
+        }
+        df=pd.DataFrame(custom_input_data)
+
+        return df
+        
+        
