@@ -1,8 +1,0 @@
-LICENCE
-LICENSE
-README.md
-setup.py
-Heat_strock_prediction.egg-info/PKG-INFO
-Heat_strock_prediction.egg-info/SOURCES.txt
-Heat_strock_prediction.egg-info/dependency_links.txt
-Heat_strock_prediction.egg-info/top_level.txt
