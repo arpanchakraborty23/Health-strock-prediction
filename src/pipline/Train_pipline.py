@@ -20,23 +20,23 @@ class TrainPipline:
             data_ingestion.initate_data_ingestion()
             logging.info('<<<<<<<<<<<<<<<< Data_Ingestion_completed >>>>>>>>>>>>>>>>>>')
 
-            # logging.info('<<<<<<<<<<<<<<<< Data_Transformation >>>>>>>>>>>>>>>>>>')
+            logging.info('<<<<<<<<<<<<<<<< Data_Transformation >>>>>>>>>>>>>>>>>>')
 
-            # config=ConfigManager()
-            # data_transform_config=config.get_data_transformation_config()
-            # data_transform=DataTransformation(config=data_transform_config)
-            # data_transform.initate_data_transformation()
+            config=ConfigManager()
+            data_transform_config=config.get_data_transformation_config()
+            data_transform=DataTransformation(config=data_transform_config)
+            data_transform.initate_data_transformation()
 
-            # logging.info('<<<<<<<<<<<<<<<< Data_Transformation Complete >>>>>>>>>>>>>>>>>>')
+            logging.info('<<<<<<<<<<<<<<<< Data_Transformation Complete >>>>>>>>>>>>>>>>>>')
 
 
-            # logging.info('<<<<<<<<<<<<<<<< Model Train >>>>>>>>>>>>>>>>>>')
-            # config=ConfigManager()
-            # model_train_config=config.get_model_train_config()
-            # model_train=ModelTrain(model_train_config)
-            # model_train.initate_model_train()
+            logging.info('<<<<<<<<<<<<<<<< Model Train >>>>>>>>>>>>>>>>>>')
+            config=ConfigManager()
+            model_train_config=config.get_model_train_config()
+            model_train=ModelTrain(model_train_config)
+            model_train.initate_model_train()
 
-            # logging.info('<<<<<<<<<<<<<<<< Model Train complete >>>>>>>>>>>>>>>>>>')
+            logging.info('<<<<<<<<<<<<<<<< Model Train complete >>>>>>>>>>>>>>>>>>')
 
 
             

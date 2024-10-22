@@ -46,8 +46,8 @@ def Data_read_from_db(url,db,collection):
     data=collection.find()
     df=pd.DataFrame(data)
 
-    # if'_id' in df.columns:
-    #     df.drop('_id',axis=1,inplace=True)
+    if'_id' in df.columns:
+        df.drop('_id',axis=1,inplace=True)
     print(df.head())
     return df
     

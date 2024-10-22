@@ -26,7 +26,7 @@ class DataIngestion:
                                  collection=os.getenv('collection'))
 
             
-            # df['Target']=df['Target'].map({'Dropout':0 ,'Graduate':1 ,'Enrolled':2 })
+         
 
             logging.info('Data read completed')
 

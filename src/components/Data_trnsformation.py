@@ -3,7 +3,7 @@ import sys
 import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
-from sklearn.impute import SimpleImputer
+from sklearn.impute import SimpleImputer,KNNImputer
 from sklearn.pipeline import Pipeline
 
 from src.logging.logger import logging
@@ -19,8 +19,8 @@ class DataTransformation:
         try:
             preproces_obj=Pipeline(
                 steps=[
-                    ('Impute',SimpleImputer(strategy='median')),
-                    ('Scaler',StandardScaler())
+                    ('impute', KNNImputer(n_neighbors=10)),  # Impute missing values
+                    ('scaler', StandardScaler())  # Standardize features
                 ]
             )
 
@@ -45,7 +45,9 @@ class DataTransformation:
           
 
             # x_train
-            input_cols_train_df=train_df.drop(columns=[Target_col,'Unnamed: 0'],axis=1)
+            # input_cols_train_df=train_df.drop(columns=[Target_col,'Unnamed: 0'],axis=1)
+
+            input_cols_train_df=train_df.drop(columns=[Target_col,'Unnamed: 0'],axis=1) if 'Unnamed: 0' in train_df.columns else train_df.drop(columns=[Target_col],axis=1)
 
             print(input_cols_train_df)
 
@@ -53,7 +55,8 @@ class DataTransformation:
             target_col_train_df=train_df[Target_col]
 
             #  X_test
-            input_cols_test_df=test_df.drop(columns=[Target_col,'Unnamed: 0'],axis=1)
+            input_cols_test_df=test_df.drop(columns=[Target_col,'Unnamed: 0'],axis=1) if 'Unnamed: 0' in test_df.columns else test_df.drop(columns=[Target_col],axis=1)
+
 
             # y_test
             target_col_test_df=test_df[Target_col]
