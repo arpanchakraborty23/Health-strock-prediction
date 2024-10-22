@@ -1,6 +1,7 @@
 import os
 import sys
 import yaml,json
+import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
@@ -11,6 +12,9 @@ from box import ConfigBox
 from sklearn.metrics import roc_auc_score,accuracy_score
 from src.logging.logger import logging
 from src.exception.exception import CustomException
+from pymongo import MongoClient
+
+
 
 @ensure_annotations
 def read_yaml(file_path:Path):
@@ -32,6 +36,21 @@ def create_dir(file_path:list,verbose=True):
                 logging.info(f"created directory at: {path}")    
     except Exception as e:
         raise CustomException(sys,e) 
+    
+def Data_read_from_db(url,db,collection):
+    client=MongoClient(url)
+
+    db=client[db]
+    collection=db[collection]
+    
+    data=collection.find()
+    df=pd.DataFrame(data)
+
+    # if'_id' in df.columns:
+    #     df.drop('_id',axis=1,inplace=True)
+    print(df.head())
+    return df
+    
     
 def save_obj(file_path,obj):
     with open(file_path,'wb') as f:
@@ -64,27 +83,13 @@ def model_evaluatuion(x_train,y_train,x_test,y_test,models,prams):
                 
                 test_model_score = accuracy_score(y_test,y_test_pred)*100
 
+                print(f"Training {model} accuracy{test_model_score}")
+
                 report[list(models.keys())[i]] =  test_model_score
 
                
 
-                # Calculate the ROC curve
-                fpr, tpr, thresholds = roc_curve(y_test, y_test_pred)
-
-                # Calculate the AUC (Area Under the Curve)
-                roc_auc = auc(fpr, tpr)
-
-                # Plot the ROC curve
-                plt.figure()
-                plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
-                plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-                plt.xlim([0.0, 1.0])
-                plt.ylim([0.0, 1.05])
-                plt.xlabel('False Positive Rate')
-                plt.ylabel('True Positive Rate')
-                plt.title(f'Receiver Operating Characteristic {list(models.keys())[i]}')
-                plt.legend(loc="lower right")
-                plt.show()
+                
 
             return report
         

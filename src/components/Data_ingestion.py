@@ -1,19 +1,32 @@
 import os,sys
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from dotenv import load_dotenv
+load_dotenv()
 
 from src.logging.logger import logging
 from src.exception.exception import CustomException
 from src.entity.config_entity import DataIngestonConfig
+from src.utils.utils import Data_read_from_db
 
 class DataIngestion:
     def __init__(self,config=DataIngestonConfig) -> None:
+        
         self.config=config
 
     def initate_data_ingestion(self):
         try:
             logging.info('Data Ingestion Started')
-            df=pd.read_csv('Datasets\clean_dataset.csv')
+
+            logging.info('read data from Mongodb')
+            
+            # df=pd.read_csv(r"C:\Users\www58\OneDrive\Desktop\train.csv\train.csv")
+            df=Data_read_from_db(url=os.getenv('MongoDB'),
+                                 db=os.getenv('db'),
+                                 collection=os.getenv('collection'))
+
+            
+            # df['Target']=df['Target'].map({'Dropout':0 ,'Graduate':1 ,'Enrolled':2 })
 
             logging.info('Data read completed')
 

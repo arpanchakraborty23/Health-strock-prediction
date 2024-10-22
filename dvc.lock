@@ -5,25 +5,25 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 14de8df2cb4fc3249756d9616d871b0e
-      size: 746
+      md5: 94ed2afe796795bc78ecb5b70046e7de
+      size: 960
     - path: src/pipline/Train_pipline.py
       hash: md5
-      md5: 8461db1ed19c0f161b236f793eec0117
-      size: 2160
+      md5: 56d5d92d899acb22977b983a773b1015
+      size: 2184
     outs:
     - path: artifacts/data_ingestion/raw.csv
       hash: md5
-      md5: 61d08f6fc66074b2d5902ac9378067b7
-      size: 648995
+      md5: 5a260a875705abf4ad0e3fa868725a75
+      size: 1361507
     - path: artifacts/data_ingestion/test.csv
       hash: md5
-      md5: df07d35453b739f844192f44d3de6e87
-      size: 188274
+      md5: 1f8d100c6ad0759031e7fb67873e9e8b
+      size: 395264
     - path: artifacts/data_ingestion/train.csv
       hash: md5
-      md5: db7cdeec3cd4e9b5a920caa33bcec06b
-      size: 460857
+      md5: 00095b39b6857edd0078a009dcc478f8
+      size: 966369
   data_transformation:
     cmd: python src/pipline/Train_pipline.py
     deps:

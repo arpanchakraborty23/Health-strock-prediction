@@ -17,8 +17,8 @@ class ConfigManager:
 
     def get_data_ingestion_config(self):
         try:
-            config=self.config.Data_Ingestion
-            create_dir([config.dir])
+            config=self.config['Data_Ingestion']
+            create_dir([config['dir']])
 
             data_ingestion_config=DataIngestonConfig(
                 dir=config.dir,

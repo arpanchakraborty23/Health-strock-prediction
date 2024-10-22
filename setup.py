@@ -15,7 +15,7 @@ def get_requirements(filepth:str)->[List]:
 
 setup(
     name='Health-stroke-Prediction',
-    version='0.2',
+    version='0.3',
     author='Arpanchakraborty23',
     author_email='arpanchakaborty500@gmail.com',
     url='https:\\github.com/arpanchakraborty23/Heat-strock-prediction.git',

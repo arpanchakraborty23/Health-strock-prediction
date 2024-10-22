@@ -28,7 +28,7 @@ class ModelTrain:
             )
 
             models={
-                'LogisticRegression':LogisticRegression(),
+                # 'LogisticRegression':LogisticRegression(),
                 'KNeighborsClassifier': KNeighborsClassifier(),
                 'DesisionTree':DecisionTreeClassifier(),
                 'RandomForest':RandomForestClassifier(),
@@ -37,11 +37,12 @@ class ModelTrain:
             }
 
             params = {
-                'LogisticRegression': {
-                    'C': [1, 5, 10],
-                    'penalty': ['l1', 'l2'],
-                    'solver': ['lbfgs', 'liblinear', 'newton-cg', 'sag', 'saga']
-                },
+                # 'LogisticRegression': {
+                #     'multi_class':['multinomial'],
+                #     'C': [1, 5, 10],
+                #     'penalty': ['l2'],
+                
+                # },
                 'KNeighborsClassifier': {
                     'n_neighbors': [1, 3, 5, 10],
                     'weights': ['uniform', 'distance'],
@@ -49,24 +50,24 @@ class ModelTrain:
                 },
                 'DesisionTree': {
                     'criterion': ['gini', 'entropy'],
-                    'max_depth': [None, 10, 20, 30],
+                    'max_depth': [None, 10, 20],
                     'min_samples_split': [2, 5, 10],
                     'min_samples_leaf': [1, 2, 4]
                 },
                 'RandomForest': {
-                    'n_estimators': [50, 100, 200],
-                    'max_depth': [None, 10, 20, 30],
+                    'n_estimators': [50, 100, 20],
+                    'max_depth': [None, 10, 20],
                     'min_samples_split': [2, 5, 10],
                     'min_samples_leaf': [1, 2, 4]
                 },
                 'BaggingClf': {
-                    'n_estimators': [50, 100, 200],
+                    'n_estimators': [50, 100, 20],
                     'max_samples': [0.5, 0.7, 0.9]
                 },
                 'Xgboost': {
-                    'n_estimators': [50, 100, 200],
-                    'learning_rate': [0.01, 0.1, 0.2, 0.3],
-                    'max_depth': [3, 5, 7, 9],
+                    'n_estimators': [50, 100, 20],
+                    'learning_rate': [0.01, 0.1,],
+                    'max_depth': [3, 5, 7],
                     'subsample': [0.6, 0.8, 1.0],
                     'colsample_bytree': [0.6, 0.8, 1.0]
                 }

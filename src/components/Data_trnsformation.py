@@ -45,7 +45,7 @@ class DataTransformation:
           
 
             # x_train
-            input_cols_train_df=train_df.drop(columns=[Target_col,'Unnamed: 0','Unnamed: 0.1'],axis=1)
+            input_cols_train_df=train_df.drop(columns=[Target_col,'Unnamed: 0'],axis=1)
 
             print(input_cols_train_df)
 
@@ -53,7 +53,7 @@ class DataTransformation:
             target_col_train_df=train_df[Target_col]
 
             #  X_test
-            input_cols_test_df=test_df.drop(columns=[Target_col,'Unnamed: 0','Unnamed: 0.1'],axis=1)
+            input_cols_test_df=test_df.drop(columns=[Target_col,'Unnamed: 0'],axis=1)
 
             # y_test
             target_col_test_df=test_df[Target_col]
