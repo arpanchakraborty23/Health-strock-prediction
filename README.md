@@ -1,9 +1,12 @@
 # End To End Heat-strock-prediction Project
-A stroke is a medical condition in which poor blood flow to the brain causes cell death. There are two main types of stroke: ischemic, due to lack of blood flow, and hemorrhagic, due to bleeding. Both cause parts of the brain to stop functioning properly. Signs and symptoms of a stroke may include an inability to move or feel on one side of the body, problems understanding or speaking, dizziness, or loss of vision to one side. Signs and symptoms often appear soon after the stroke has occurred. If symptoms last less than one or two hours, the stroke is a transient ischemic attack (TIA), also called a mini-stroke. A hemorrhagic stroke may also be associated with a severe headache. The symptoms of a stroke can be permanent. Long-term complications may include pneumonia and loss of bladder control.
 
-The main risk factor for stroke is high blood pressure. Other risk factors include high blood cholesterol, tobacco smoking, obesity, diabetes mellitus, a previous TIA, end-stage kidney disease, and atrial fibrillation. An ischemic stroke is typically caused by blockage of a blood vessel, though there are also less common causes. A hemorrhagic stroke is caused by either bleeding directly into the brain or into the space between the brain's membranes. Bleeding may occur due to a ruptured brain aneurysm. Diagnosis is typically based on a physical exam and is supported by medical imaging such as a CT scan or MRI scan. A CT scan can rule out bleeding, but may not necessarily rule out ischemia, which early on typically does not show up on a CT scan. Other tests such as an electrocardiogram (ECG) and blood tests are done to determine risk factors and rule out other possible causes. Low blood sugar may cause similar symptoms.
+## Project Overview
+This project aims to develop a machine learning model to predict the likelihood of heart stroke based on patient health data (e.g., age, gender, hypertension, heart disease history, etc.). The goal is to provide early predictions to support healthcare professionals in preventing strokes through timely interventions. The project involves data preprocessing, model development, hyperparameter tuning, and deployment through MLOps tools.
 
-Prevention includes decreasing risk factors, surgery to open up the arteries to the brain in those with problematic carotid narrowing, and warfarin in people with atrial fibrillation. Aspirin or statins may be recommended by physicians for prevention. A stroke or TIA often requires emergency care. An ischemic stroke, if detected within three to four and half hours, may be treatable with a medication that can break down the clot. Some hemorrhagic strokes benefit from surgery. Treatment to attempt recovery of lost function is called stroke rehabilitation, and ideally takes place in a stroke unit; however, these are not available in much of the world.
+## Problem Statement
+Heart stroke is one of the leading causes of death worldwide. Early diagnosis of individuals at risk is critical in reducing mortality rates. This project uses machine learning to predict the chances of a heart stroke by analyzing various health-related attributes, enabling healthcare professionals to make data-driven, preventive decisions.
+
+
 
 ## Attribute Information
 1) gender: "Male", "Female" or "Other"
@@ -25,6 +28,14 @@ Prevention includes decreasing risk factors, surgery to open up the arteries to 
 10) smoking_status: "formerly smoked", "never smoked", "smokes" or "Unknown"*
 
 11) stroke: 1 if the patient had a stroke or 0 if not
+
+## Life Cycle 
+Data Preprocessing: encoding, and normalizing health data to prepare it for machine learning models.
+Model Training: Building and training machine learning models such as Random Forest, XGBoost, and Logistic Regression to predict stroke risk.
+Hyperparameter Tuning: Optimizing model performance through techniques like Grid Search and Random Search.
+MLOps Deployment: Containerizing and deploying the model using Docker, automating updates via CI/CD pipelines, and tracking model performance with MLflow.
+Model Monitoring: Continuous tracking of model performance and retraining as new data becomes available.
+Model Deploy: AWS Beanstalk for web app hosting
 
 ## How to run ?
 
