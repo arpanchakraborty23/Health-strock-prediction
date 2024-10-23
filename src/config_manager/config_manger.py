@@ -3,7 +3,7 @@ import yaml
 import pandas as pd
 from src.logging.logger import logging
 from src.exception.exception import CustomException
-from src.entity.config_entity import DataIngestonConfig,DatatranformationConfig,ModelTrainConfig,PredictionConfig
+from src.entity.config_entity import DataIngestonConfig,DatatranformationConfig,ModelTrainConfig,ModelEvalConfig,PredictionConfig
 from src.constant.yaml_path import *
 from src.utils.utils import read_yaml,create_dir
 
@@ -71,6 +71,25 @@ class ConfigManager:
         except Exception as e:
             logging.info(f'error {str(e)}')
             raise CustomException(sys,e)
+
+
+    def get_model_eval_config(self):
+        try:
+            config=self.config.Model_eval
+            model_eval_config=ModelEvalConfig(
+                dir=config.dir,
+                test_arr=self.get_data_transformation_config().test_arr,
+                model=self.get_model_train_config().model
+            )
+            return model_eval_config
+
+        except Exception as e:
+            logging.info(f'Error {str(e)}')
+            raise CustomException(sys,e)
+            
+
+
+            
 class PredictionConfigManager:
     def __init__(self,config_file_path=Config_file_path) -> None:
         self.config=read_yaml(config_file_path)

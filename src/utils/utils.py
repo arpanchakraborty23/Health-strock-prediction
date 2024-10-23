@@ -68,9 +68,9 @@ def model_evaluatuion(x_train,y_train,x_test,y_test,models,prams):
                 gs=GridSearchCV(model,param_grid=param,cv=5,verbose=3,refit=True,scoring='neg_mean_squared_error',n_jobs=-1)
 
             
-                gs.fit(x_train,y_train)
+                # gs.fit(x_train,y_train)
 
-                model.set_params(**gs.best_params_)
+                # model.set_params(**gs.best_params_)
 
                 # Train model
                 model.fit(x_train,y_train)
@@ -83,7 +83,7 @@ def model_evaluatuion(x_train,y_train,x_test,y_test,models,prams):
                 
                 test_model_score = accuracy_score(y_test,y_test_pred)*100
 
-                print(f"Training {model} accuracy{test_model_score}")
+                print(f"Training {model} accuracy {test_model_score}")
 
                 report[list(models.keys())[i]] =  test_model_score
 
@@ -102,4 +102,9 @@ def load_obj(file_path):
         data=pickle.load(f)
 
     return data
+
+def save_json(data,filename):
+  
+        with open(filename,'w') as j:
+            json.dump(data,j,indent=4)
 

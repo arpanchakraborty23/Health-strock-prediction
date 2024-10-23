@@ -5,6 +5,7 @@ from src.config_manager.config_manger import ConfigManager
 from src.components.Data_ingestion import DataIngestion
 from src.components.Data_trnsformation import DataTransformation
 from src.components.model_train import ModelTrain
+from src.components.model_evaluation import ModelEval
 
 
 class TrainPipline:
@@ -37,6 +38,17 @@ class TrainPipline:
             model_train.initate_model_train()
 
             logging.info('<<<<<<<<<<<<<<<< Model Train complete >>>>>>>>>>>>>>>>>>')
+
+
+            logging.info('<<<<<<<<<<<<<<<< Model Evaluation >>>>>>>>>>>>>>>>>>')
+            config=ConfigManager()
+            model_eval_config=config.get_model_eval_config()
+            model_eval=ModelEval(model_eval_config)
+            model_eval.initiating_model_eval()
+
+            logging.info('<<<<<<<<<<<<<<<< Model Evaluation complete >>>>>>>>>>>>>>>>>>')
+
+
 
 
             

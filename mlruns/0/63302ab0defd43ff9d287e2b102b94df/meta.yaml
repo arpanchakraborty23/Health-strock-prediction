@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/63302ab0defd43ff9d287e2b102b94df/artifacts
+end_time: 1729707039270
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 63302ab0defd43ff9d287e2b102b94df
+run_name: bedecked-eel-222
+run_uuid: 63302ab0defd43ff9d287e2b102b94df
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729707027582
+status: 3
+tags: []
+user_id: ac

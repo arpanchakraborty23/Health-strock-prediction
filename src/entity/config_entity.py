@@ -27,6 +27,12 @@ class ModelTrainConfig:
     model:Path
 
 @dataclass
+class ModelEvalConfig:
+    dir:Path
+    test_arr:Path
+    model:Path
+
+@dataclass
 class PredictionConfig:
     model:Path
     preprocess_obj:Path

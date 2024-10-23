@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/619bb7eac343428bb374916923b1566c/artifacts
+end_time: 1729706932613
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 619bb7eac343428bb374916923b1566c
+run_name: bemused-newt-309
+run_uuid: 619bb7eac343428bb374916923b1566c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729706932473
+status: 4
+tags: []
+user_id: ac
