@@ -3,16 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health-stroke-Prediction</title>
+    <title>Health Data Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Prevents scrolling */
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            background-image: utl('medical.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: brightness(0.5); /* Dark overlay for readability */
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds depth to text */
+        }
+
+        p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: #ddd;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            background-color: #4c6ef5;
+            padding: 15px 30px;
+            font-size: 1em;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3743b2;
+        }
+    </style>
 </head>
 <body>
-
-    <h1>Welcome End to End Project</h1>
-
-    <p>This is the content of the first page.</p>
-
-    <!-- Link to another page -->
-    <a href="form.html">prediction page</a>
-
+    <div class="container">
+        <h1>Welcome to the Health Data Project</h1>
+        <p>Track and analyze health data with ease. Choose an option below to get started.</p>
+        
+        <div class="btn-container">
+            <a href="{{ url_for('upload') }}" class="btn">Upload File for Prediction</a>
+        </div>
+    </div>
 </body>
 </html>

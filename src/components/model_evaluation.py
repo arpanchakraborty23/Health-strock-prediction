@@ -68,7 +68,7 @@ class ModelEval:
                 scores = {'accuracy': accuracy, 'precision': precision, 'recall': recall,"classification report":clf_report}
 
                 # Save metrics as JSON
-                save_json(filename='model_eval_metrics.json', data=scores)
+                save_json(filename='scores.json', data=scores)
 
                 # Log metrics to MLflow
                 mlflow.log_metric('Accuracy', accuracy)

@@ -33,5 +33,6 @@ stages:
     - artifacts/data_transformation/test.npy
     - artifacts/model_train/model.pkl
     - src\pipline\model_evaluation_pipline.py
-    outs:
-    - model_eval_metrics.json
+    metrics:
+    - scores.json:
+        cache: false

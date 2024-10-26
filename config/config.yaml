@@ -24,7 +24,7 @@ Model_eval:
   dir: artifacts/model_eval
   test_arr: artifacts/data_transformation/test.npy
   model: artifacts/model_train/model.pkl
-  metrics: artifacts/model_eval/metrics.json
+  
 
 Prediction_pipline:
   model: artifacts/model_train/model.pkl

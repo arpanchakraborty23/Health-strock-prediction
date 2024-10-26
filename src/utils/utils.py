@@ -50,6 +50,21 @@ def Data_read_from_db(url,db,collection):
         df.drop('_id',axis=1,inplace=True)
     print(df.head())
     return df
+
+def input_csv_to_db(input_csv,url,db,collection):
+    try:
+        logging.info(type(input_csv))
+
+        Client=MongoClient(url)
+        db=Client[db]
+        collection=db[collection]
+        print(input_csv)
+        dict_m=input_csv.to_dict(orient='records')
+        collection.insert_many(dict_m)
+        
+    except Exception as e:
+        logging.info(f'Error in {str(e)}')
+        raise CustomException(sys,e) 
     
     
 def save_obj(file_path,obj):
@@ -68,9 +83,9 @@ def model_evaluatuion(x_train,y_train,x_test,y_test,models,prams):
                 gs=GridSearchCV(model,param_grid=param,cv=5,verbose=3,refit=True,scoring='neg_mean_squared_error',n_jobs=-1)
 
             
-                # gs.fit(x_train,y_train)
+                gs.fit(x_train,y_train)
 
-                # model.set_params(**gs.best_params_)
+                model.set_params(**gs.best_params_)
 
                 # Train model
                 model.fit(x_train,y_train)
@@ -107,4 +122,6 @@ def save_json(data,filename):
   
         with open(filename,'w') as j:
             json.dump(data,j,indent=4)
+
+
 
