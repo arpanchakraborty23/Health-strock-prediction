@@ -13,4 +13,5 @@ python-box
 flask
 dagshub
 dvc_s3
+Dockerfile
 -e .
