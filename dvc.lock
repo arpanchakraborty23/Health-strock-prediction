@@ -1,0 +1,98 @@
+schema: '2.0'
+stages:
+  Data_Ingestion:
+    cmd: python src\pipline\data_ingestion_pipeline.py
+    deps:
+    - path: config\config.yaml
+      hash: md5
+      md5: 26d629c104473183b5344ae74816107f
+      size: 1144
+    - path: src\pipline\data_ingestion_pipeline.py
+      hash: md5
+      md5: 4b9c137f3a1251672bd02688968e9712
+      size: 1175
+    outs:
+    - path: artifacts/data_ingestion/raw.csv
+      hash: md5
+      md5: 6be9150fb49314bf80ee8d2a7b675c5f
+      size: 545133
+    - path: artifacts/data_ingestion/test.csv
+      hash: md5
+      md5: 76c0ee7352e4145377529598fd48ad8e
+      size: 158332
+    - path: artifacts/data_ingestion/train.csv
+      hash: md5
+      md5: e82d7a37ad4a510f554d46ef21315a28
+      size: 386923
+  Data_Transformation:
+    cmd: python src\pipline\data_transformation_pipeline.py
+    deps:
+    - path: artifacts/data_ingestion/test.csv
+      hash: md5
+      md5: 76c0ee7352e4145377529598fd48ad8e
+      size: 158332
+    - path: artifacts/data_ingestion/train.csv
+      hash: md5
+      md5: e82d7a37ad4a510f554d46ef21315a28
+      size: 386923
+    - path: config/config.yaml
+      hash: md5
+      md5: 26d629c104473183b5344ae74816107f
+      size: 1144
+    - path: src\pipline\data_transformation_pipeline.py
+      hash: md5
+      md5: 3331cacd0cf470d2f27c501c79207ac3
+      size: 1183
+    outs:
+    - path: artifacts/data_transformation/preprocess.pkl
+      hash: md5
+      md5: 5171e199ec8af6c14a55b9531fd5d358
+      size: 622586
+    - path: artifacts/data_transformation/test.npy
+      hash: md5
+      md5: fd99d6e9837e6c7f3d8d4ad4bd69a973
+      size: 248288
+    - path: artifacts/data_transformation/train.npy
+      hash: md5
+      md5: 4a3ca201356605fcf2d1d334ffde596a
+      size: 607504
+  Model_Train:
+    cmd: python src\pipline\model_train_pipeline.py
+    deps:
+    - path: artifacts/data_transformation/test.npy
+      hash: md5
+      md5: fd99d6e9837e6c7f3d8d4ad4bd69a973
+      size: 248288
+    - path: artifacts/data_transformation/train.npy
+      hash: md5
+      md5: 4a3ca201356605fcf2d1d334ffde596a
+      size: 607504
+    - path: src\pipline\model_train_pipeline.py
+      hash: md5
+      md5: 2d3d6a7e12154dc966c4afea8e7798e8
+      size: 1094
+    outs:
+    - path: artifacts/model_train/model.pkl
+      hash: md5
+      md5: 1686530946c37f17e1d2550116735894
+      size: 11354510
+  Model_Evaluation:
+    cmd: python src\pipline\model_evaluation_pipline.py
+    deps:
+    - path: artifacts/data_transformation/test.npy
+      hash: md5
+      md5: fd99d6e9837e6c7f3d8d4ad4bd69a973
+      size: 248288
+    - path: artifacts/model_train/model.pkl
+      hash: md5
+      md5: 1686530946c37f17e1d2550116735894
+      size: 11354510
+    - path: src\pipline\model_evaluation_pipline.py
+      hash: md5
+      md5: c637c816b2298e37fe945261f9fe9e69
+      size: 1089
+    outs:
+    - path: model_eval_metrics.json
+      hash: md5
+      md5: 0ea25bd109bbae0492682aa70547568b
+      size: 477

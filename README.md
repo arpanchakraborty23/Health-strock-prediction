@@ -30,12 +30,12 @@ Heart stroke is one of the leading causes of death worldwide. Early diagnosis of
 11) stroke: 1 if the patient had a stroke or 0 if not
 
 ## Life Cycle 
-Data Preprocessing: encoding, and normalizing health data to prepare it for machine learning models.
-Model Training: Building and training machine learning models such as Random Forest, XGBoost, and Logistic Regression to predict stroke risk.
-Hyperparameter Tuning: Optimizing model performance through techniques like Grid Search and Random Search.
-MLOps Deployment: Containerizing and deploying the model using Docker, automating updates via CI/CD pipelines, and tracking model performance with MLflow.
-Model Monitoring: Continuous tracking of model performance and retraining as new data becomes available.
-Model Deploy: AWS Beanstalk for web app hosting
+*  Data Preprocessing: encoding, and normalizing health data to prepare it for machine learning models.
+* Model Training: Building and training machine learning models such as Random Forest, XGBoost, and Logistic Regression to predict stroke risk.
+* Hyperparameter Tuning: Optimizing model performance through techniques like Grid Search and Random Search.
+* MLOps Deployment: Containerizing and deploying the model using Docker, automating updates via CI/CD pipelines, and tracking model performance with MLflow.
+* Model Monitoring: Continuous tracking of model performance and retraining as new data becomes available.
+* Model Deploy: AWS Beanstalk for web app hosting
 
 ## How to run ?
 
@@ -53,6 +53,13 @@ conda activate ./env
 pip install -r requirements.txt
 ```
 
+### Setup Mongodb Atlas Database
+```bash
+ create .env file 
+ url=''
+ db=''
+ collection=''
+```
 ### Run Flask App
 ```bash
 python app.py

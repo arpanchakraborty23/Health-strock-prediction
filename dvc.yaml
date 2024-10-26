@@ -1,0 +1,37 @@
+stages:
+  Data_Ingestion:
+    cmd: python src\pipline\data_ingestion_pipeline.py
+    deps:
+    - config\config.yaml
+    - src\pipline\data_ingestion_pipeline.py
+    outs:
+    - artifacts/data_ingestion/raw.csv
+    - artifacts/data_ingestion/test.csv
+    - artifacts/data_ingestion/train.csv
+  Data_Transformation:
+    cmd: python src\pipline\data_transformation_pipeline.py
+    deps:
+    - artifacts/data_ingestion/test.csv
+    - artifacts/data_ingestion/train.csv
+    - config/config.yaml
+    - src\pipline\data_transformation_pipeline.py
+    outs:
+    - artifacts/data_transformation/preprocess.pkl
+    - artifacts/data_transformation/test.npy
+    - artifacts/data_transformation/train.npy
+  Model_Train:
+    cmd: python src\pipline\model_train_pipeline.py
+    deps:
+    - artifacts/data_transformation/test.npy
+    - artifacts/data_transformation/train.npy
+    - src\pipline\model_train_pipeline.py
+    outs:
+    - artifacts/model_train/model.pkl
+  Model_Evaluation:
+    cmd: python src\pipline\model_evaluation_pipline.py
+    deps:
+    - artifacts/data_transformation/test.npy
+    - artifacts/model_train/model.pkl
+    - src\pipline\model_evaluation_pipline.py
+    outs:
+    - model_eval_metrics.json

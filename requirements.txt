@@ -11,4 +11,6 @@ imblearn
 ensure
 python-box
 flask
+dagshub
+dvc_s3
 -e .
